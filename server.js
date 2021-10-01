@@ -62,6 +62,10 @@ io.on("connection", socket => {
         socket.broadcast.emit('update-payment', { user })
     })
 
+    socket.on('feedback-update', user => {
+        socket.broadcast.emit('update-feedback', { user })
+    })
+
     socket.on('send-chat-message', message => {
         // console.log(message)
         socket.broadcast.emit('receive-message', { message, users, userdetails: users[socket.id] })
